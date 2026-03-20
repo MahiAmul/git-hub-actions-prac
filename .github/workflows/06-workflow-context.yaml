@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       debug:
+        type: boolean
         description: "Enable debug mode"
-        required: false
-        default: "false"
+        default: false
 
 jobs:
   echo:
