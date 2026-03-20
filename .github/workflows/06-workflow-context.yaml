@@ -23,4 +23,4 @@ jobs:
       - name: reterive variable
         run: |
           echo "variable Name: ${{ env.GITHUB_WORKFLOW }}
-          echo "variable Name: ${{ var.MY_VARIABLE }}"
+          echo "variable Name: ${{ vars.MY_VARIABLE }}"
