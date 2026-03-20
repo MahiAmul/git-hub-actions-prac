@@ -9,10 +9,15 @@ on:
         type: boolean
         description: "Enable debug mode"
         default: false
-
+env:
+  MY_VARIABLE_WORKFLOW: "This is a custom variable"
+  MY_OVERWRITTEN_VAR: "Workflow level variable that will be overwritten in the job"
 jobs:
   echo:
     runs-on: ubuntu-latest
+    env:
+      MY_VARIABLE_JOB: "This is a custom variable for the job"
+      MY_OVERWRITTEN_VAR: "Job level variable that overwrites the workflow level variable"
     steps:
       - name: display information
         run: |
@@ -29,3 +34,8 @@ jobs:
       - name: reterive variable
         run: |
           echo "variable Name: ${{ vars.MY_VARIABLE }}"
+      - name: env context
+        run: |
+          echo "workflow enve ${{env.MY_VARIABLE_WORKFLOW}}"
+          echo "job enve ${{env.MY_VARIABLE_JOB}}"
+          echo "job enve ${{env.MY_OVERWRITTEN_VAR}}"
